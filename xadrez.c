@@ -3,17 +3,16 @@
 // Desafio de Xadrez - MateCheck
 // Nível Mestre - Movimentação das Peças
 
-void movimentoBispo(int casasV){ //Cria a recursividade para o Bispo
-    int casasH = casasV; // Cria uma variável casasH que controlará o movimento horizontal e a iguala a casasV
-    while(casasV > 0) //Executa o código enquanto "casasV" for maior que 0
+void movimentoBispo(int casas){ // Cria a recursividade para o Bispo
+    while(casas > 0) //LOOP EXETRNO - Executa o código enquanto "casas" for maior que 0
     {
-        while(casasH > 0) //Executa o código enquanto "casasH" for maior que 0
+        while(casas > 0) //LOOP INTERNO - Executa o código enquanto "casas" for maior que 0
         {
             printf("Direita\n"); //Imprime a direção de movimento do Bispo
-            casasH--; //Decrementa o valor de casasH
+            casas--; // Decrementa o valor de "casas"
+            break; // Para o código para evitar loop infinito e prossegue para o loop externo
         }
         printf("Cima\n"); //Imprime a direção de movimento do Bispo
-        casasV--; //Decrementa o valor de casasV
     }
 }
 
@@ -34,7 +33,8 @@ void movimentoRainha(int casas){
 }
 
 int main(){
-    int cavaloH = 2, cavaloV = 1; //Declara e inicializa as variáveis que armazenarão o número de movimentos do cavalo, sendo cavaloH para o sentido horizontal e cavaloV para o sentido vertical
+
+    printf("Bem-vindo ao Desafio Xadrez - MateCheck!\n"); // Exibe uma mensagem de boas vindas
 
     // Implementação de Movimentação do Bispo, na diagonal, cinco casas para cima e para a direita
     printf("Movimentando o Bispo\n"); //Informa o movimento que está sendo realizado
@@ -53,12 +53,17 @@ int main(){
 
     // Implementação de Movimentação do Cavalo, para cima, duas casas, e para a direita, uma casa
     printf("Movimentando o Cavalo\n"); //Informa o movimento que está sendo realizado
-        for (cavaloH = 1, cavaloV = 2; cavaloH > 0 && cavaloV > 0; cavaloH--)//Executa o código enquanto cavaloH for maior que 0, e ao mesmo decrementa seu valor
+    /*O for abaixo declara e inicializa as variáveis "cavaloH" (para o movimento horizontal) e "cavaloV" (para o movimento vertical),
+    e executa o código interno enquanto ambas as variáveis forem maiores que 0, além de decrementar o valor de "cavaloH".*/
+    for(int cavaloH = 1, cavaloV = 2; cavaloH > 0 && cavaloV > 0; cavaloH --)
+    {
+        while (cavaloV > 0) // Executa o código enquanto "cavaloV" for maior que 0
         {
-            printf("Cima\n"); //Imprime a direção da primeira parte do movimento do Cavalo
-            printf("Cima\n"); //Imprime a direção da primeira parte do movimento do Cavalo
-            printf("Direita\n"); //Imprime a direção da segunda parte do movimento do Cavalo
+            printf("Cima\n"); // Imprime a direção do momento
+            cavaloV--; // Decrementa o valor de "cavaloV"
         }
+        printf("Direita\n"); // Imprime a direção do movimento
+    }
     printf("\n"); //Adiciona uma quebra de linha para facilitar a visualização no terminal
 
     return 0; //Finaliza o programa
